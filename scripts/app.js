@@ -55,7 +55,10 @@ window.addEventListener('keydown', evt => {
                 let visualize_str = '';
                 ascii_visualizer.textContent = visualize_str;
                 // where the magic happens
-                dataArray.forEach(level => ascii_visualizer.textContent += `${visualization_char.repeat(Math.floor(level / 2))}${filler_char.repeat(char_across - Math.floor(level / 2))}\n`);
+                dataArray.forEach(_level => {
+                    level = Math.min(Math.floor(_level/2),char_across);
+                    ascii_visualizer.textContent += `${visualization_char.repeat(level)}${filler_char.repeat(char_across - level)}\n`;  
+            });
             };
             draw();
         }
